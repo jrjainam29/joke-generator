@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>😂 Random Joke Generator</h1>
+            <p class="subtitle">Get a laugh whenever you need one!</p>
+        </header>
+
+        <div class="controls">
+            <div class="category-filter">
+                <label for="categorySelect">Category:</label>
+                <select id="categorySelect">
+                    <option value="">All Categories</option>
+                    <option value="general">General</option>
+                    <option value="programming">Programming</option>
+                    <option value="knock-knock">Knock Knock</option>
+                </select>
+            </div>
+            <div class="control-buttons">
+                <button id="getJokeBtn" class="btn btn-primary">
+                    <span class="btn-text">Get New Joke</span>
+                    <span class="btn-loader hidden">Loading...</span>
+                </button>
+                <button id="shareBtn" class="btn btn-secondary" disabled>Share</button>
+                <button id="favoriteBtn" class="btn btn-secondary">♡ Favorite</button>
+            </div>
+        </div>
+
+        <div class="joke-display">
+            <div id="jokeContainer" class="joke-card">
+                <p id="jokeText" class="joke-text">Click "Get New Joke" to start laughing!</p>
+                <small id="jokeType" class="joke-type">Ready for a joke?</small>
+            </div>
+        </div>
+
+        <div class="quick-stats">
+            <div class="stat">
+                <span class="stat-label">Jokes Loaded:</span>
+                <span id="jokeCount" class="stat-value">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Favorites:</span>
+                <span id="favoriteCount" class="stat-value">0</span>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="history">Recent Jokes</button>
+            <button class="tab-btn" data-tab="favorites">Favorites</button>
+            <button class="tab-btn" data-tab="settings">Settings</button>
+        </div>
+
+        <div id="historyTab" class="tab-content active">
+            <div id="historyList" class="joke-list">
+                <p class="empty-state">No joke history yet. Start by getting a joke!</p>
+            </div>
+        </div>
+
+        <div id="favoritesTab" class="tab-content">
+            <div id="favoritesList" class="joke-list">
+                <p class="empty-state">No favorites yet. Add some jokes to your favorites!</p>
+            </div>
+        </div>
+
+        <div id="settingsTab" class="tab-content">
+            <div class="settings-container">
+                <div class="setting">
+                    <label for="autoRefresh">
+                        <input type="checkbox" id="autoRefresh">
+                        Auto-refresh every 30 seconds
+                    </label>
+                </div>
+                <div class="setting">
+                    <label for="darkMode">
+                        <input type="checkbox" id="darkMode">
+                        Dark Mode
+                    </label>
+                </div>
+                <div class="setting">
+                    <label for="notifications">
+                        <input type="checkbox" id="notifications">
+                        Desktop Notifications
+                    </label>
+                </div>
+                <div class="setting">
+                    <button id="clearHistoryBtn" class="btn btn-danger">Clear History</button>
+                    <button id="exportBtn" class="btn btn-secondary">Export Favorites</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by <a href="https://jokeapi.dev/" target="_blank">JokeAPI</a></p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="storage.js"></script>
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
